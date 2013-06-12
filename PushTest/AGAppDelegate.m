@@ -66,11 +66,14 @@
         // apply the token, to identify THIS device
         [clientInfo setToken:pushToken];
 
-        // set some more infos, that may be useful:
-        [clientInfo setDeviceType:@"iPhone"];
-        [clientInfo setOperatingSystem:@"iOS"];
+        // --optional config--
+        // set some 'useful' hardware information params
+        UIDevice *currentDevice = [UIDevice currentDevice];
         
-        
+        [clientInfo setOperatingSystem:[currentDevice systemName]];
+        [clientInfo setOsVersion:[currentDevice systemVersion]];
+        [clientInfo setDeviceType: [currentDevice model]];
+
     } success:^(id responseObject) {
         //
     } failure:^(NSError *error) {
