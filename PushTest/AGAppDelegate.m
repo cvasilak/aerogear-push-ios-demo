@@ -18,13 +18,9 @@
 #import "AGAppDelegate.h"
 #import "AeroGearPush.h"
 
-@implementation AGAppDelegate {
-    
-}
+@implementation AGAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"AeroGear Push Tutorial"
                           message: @"We hope you enjoy receving Push messages!"
@@ -81,14 +77,10 @@
         // Let's log it for now:
         NSLog(@"PushEE registration Error: %@", error);
     }];
-    
-    
-    
 }
 
 // There was an error with connecting to APNs or receiving an APNs generated token for this phone!
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-   
     // something went wrong, while talking to APNs
     // Let's simply log it for now...:
     NSLog(@"APNs Error: %@", error);
@@ -96,7 +88,6 @@
 
 // When the program is active, this callback receives the Payload of the Push Notification message
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-
     // A JSON object is received, represented as a NSDictionary.
     // use it to pick your custom key
     
