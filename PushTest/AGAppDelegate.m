@@ -44,9 +44,6 @@
 // Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    // currently, we need a little helper:
-    NSString *pushToken = [self convertToNSString:deviceToken];
-    
     // we init our "Registration helper:
     AGDeviceRegistration *registration =
     
@@ -64,7 +61,7 @@
         
         
         // apply the token, to identify THIS device
-        [clientInfo setToken:pushToken];
+        [clientInfo setToken:deviceToken];
 
         // --optional config--
         // set some 'useful' hardware information params
@@ -112,20 +109,5 @@
                           otherButtonTitles:nil];
     [alert show];
 }
-
-
-
-// little helper to transform the NSData-based token into a (useful) String:
--(NSString *) convertToNSString:(NSData *) deviceToken {
-    
-    NSString *tokenStr = [deviceToken description];
-    NSString *pushToken = [[[tokenStr
-                            stringByReplacingOccurrencesOfString:@"<" withString:@""]
-                            stringByReplacingOccurrencesOfString:@">" withString:@""]
-                            stringByReplacingOccurrencesOfString:@" " withString:@""];
-    return pushToken;
-    
-}
-
 
 @end
