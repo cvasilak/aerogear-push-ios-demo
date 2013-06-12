@@ -25,10 +25,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    // Let the device know we want to receive push notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"AeroGear Push Tutorial"
                           message: @"We hope you enjoy receving Push messages!"
@@ -39,6 +35,13 @@
     
     
     return YES;
+}
+
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // this ensures that the server is always up-to-date
+    // with the latest device token.
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 }
 
 // Here we need to register this "Mobile Variant Instance"
