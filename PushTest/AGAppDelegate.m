@@ -70,7 +70,7 @@
         [clientInfo setOsVersion:[currentDevice systemVersion]];
         [clientInfo setDeviceType: [currentDevice model]];
 
-    } success:^(id responseObject) {
+    } success:^() {
         //
     } failure:^(NSError *error) {
         // did receive an HTTP error from the PushEE server ???
