@@ -60,7 +60,7 @@
         
         
         // apply the token, to identify THIS device
-        [clientInfo setToken:deviceToken];
+        [clientInfo setDeviceToken:deviceToken];
 
         // --optional config--
         // set some 'useful' hardware information params
