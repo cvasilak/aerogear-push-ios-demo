@@ -18,17 +18,9 @@
 #import "AGAppDelegate.h"
 #import "AeroGearPush.h"
 
-@implementation AGAppDelegate {
-    
-}
+@implementation AGAppDelegate
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    
-    // Let the device know we want to receive push notifications
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"AeroGear Push Tutorial"
                           message: @"We hope you enjoy receving Push messages!"
@@ -41,11 +33,15 @@
     return YES;
 }
 
+- (void)applicationDidBecomeActive:(UIApplication *)application {
+    // this ensures that the server is always up-to-date
+    // with the latest device token.
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+}
+
 // Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    // currently, we need a little helper:
-    NSString *pushToken = [self convertToNSString:deviceToken];
     
     // we init our "Registration helper:
     AGDeviceRegistration *registration =
@@ -64,28 +60,27 @@
         
         
         // apply the token, to identify THIS device
-        [clientInfo setToken:pushToken];
+        [clientInfo setDeviceToken:deviceToken];
 
-        // set some more infos, that may be useful:
-        [clientInfo setDeviceType:@"iPhone"];
-        [clientInfo setOperatingSystem:@"iOS"];
+        // --optional config--
+        // set some 'useful' hardware information params
+        UIDevice *currentDevice = [UIDevice currentDevice];
         
-        
-    } success:^(id responseObject) {
+        [clientInfo setOperatingSystem:[currentDevice systemName]];
+        [clientInfo setOsVersion:[currentDevice systemVersion]];
+        [clientInfo setDeviceType: [currentDevice model]];
+
+    } success:^() {
         //
     } failure:^(NSError *error) {
         // did receive an HTTP error from the PushEE server ???
         // Let's log it for now:
         NSLog(@"PushEE registration Error: %@", error);
     }];
-    
-    
-    
 }
 
 // There was an error with connecting to APNs or receiving an APNs generated token for this phone!
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-   
     // something went wrong, while talking to APNs
     // Let's simply log it for now...:
     NSLog(@"APNs Error: %@", error);
@@ -93,7 +88,6 @@
 
 // When the program is active, this callback receives the Payload of the Push Notification message
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-
     // A JSON object is received, represented as a NSDictionary.
     // use it to pick your custom key
     
@@ -109,20 +103,5 @@
                           otherButtonTitles:nil];
     [alert show];
 }
-
-
-
-// little helper to transform the NSData-based token into a (useful) String:
--(NSString *) convertToNSString:(NSData *) deviceToken {
-    
-    NSString *tokenStr = [deviceToken description];
-    NSString *pushToken = [[[tokenStr
-                            stringByReplacingOccurrencesOfString:@"<" withString:@""]
-                            stringByReplacingOccurrencesOfString:@">" withString:@""]
-                            stringByReplacingOccurrencesOfString:@" " withString:@""];
-    return pushToken;
-    
-}
-
 
 @end

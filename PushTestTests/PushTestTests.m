@@ -35,7 +35,7 @@
 
 - (void)testExample
 {
-    STFail(@"Unit tests are not implemented yet in PushTestTests");
+    //STFail(@"Unit tests are not implemented yet in PushTestTests");
 }
 
 @end
