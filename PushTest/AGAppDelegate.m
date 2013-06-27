@@ -21,6 +21,11 @@
 @implementation AGAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    // Let the device know we want to receive push notifications
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"AeroGear Push Tutorial"
                           message: @"We hope you enjoy receving Push messages!"
@@ -28,22 +33,17 @@
                           cancelButtonTitle:@"OK"
                           otherButtonTitles:nil];
     [alert show];
-    
-    
+
     return YES;
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // this ensures that the server is always up-to-date
-    // with the latest device token.
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
-     (UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
 }
 
 // Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    // we init our "Registration helper:
+    // we initialize our "Registration helper"
     AGDeviceRegistration *registration =
     
         // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
@@ -58,7 +58,6 @@
         // with the PushEE server:
         [clientInfo setMobileVariantID:@"402880e63ea239b9013ea23be9dc0004"];
         
-        
         // apply the token, to identify THIS device
         [clientInfo setDeviceToken:deviceToken];
 
@@ -71,7 +70,9 @@
         [clientInfo setDeviceType: [currentDevice model]];
 
     } success:^() {
-        //
+        
+        // successfully registered!
+        
     } failure:^(NSError *error) {
         // did receive an HTTP error from the PushEE server ???
         // Let's log it for now:
