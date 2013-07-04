@@ -43,24 +43,24 @@
 // Here we need to register this "Mobile Variant Instance"
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     
-    // we initialize our "Registration helper"
+    // initialize "Registration helper" object using the
+    // base URL where the "AeroGear Unified Push Server" is running.
     AGDeviceRegistration *registration =
     
         // WARNING: make sure, you start JBoss with the -b 0.0.0.0 option, to bind on all interfaces
         // from the iPhone, you can NOT use localhost :)
-        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"http://192.168.0.102:8080/ag-push/"]];
+        [[AGDeviceRegistration alloc] initWithServerURL:[NSURL URLWithString:@"<# URL of the running AeroGear UnifiedPush Server #>"]];
     
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         
-        // Use the Mobile Variant ID, from your register iOS Variant
-        //
-        // This ID was received when performing the HTTP-based registration
-        // with the PushEE server:
-        [clientInfo setMobileVariantID:@"402880e63ea239b9013ea23be9dc0004"];
+        // You need to fill the 'Mobile Variant Id together with the 'Mobile Variant Secret'
+        // both received when performing the mobile variant registration with the server.
+        [clientInfo setMobileVariantID:@"<# Mobile Variant Id #>"];
+        [clientInfo setMobileVariantSecret:@"<# Mobile Variant Secret #>"];
         
         // apply the token, to identify THIS device
         [clientInfo setDeviceToken:deviceToken];
-
+        
         // --optional config--
         // set some 'useful' hardware information params
         UIDevice *currentDevice = [UIDevice currentDevice];
@@ -68,7 +68,7 @@
         [clientInfo setOperatingSystem:[currentDevice systemName]];
         [clientInfo setOsVersion:[currentDevice systemVersion]];
         [clientInfo setDeviceType: [currentDevice model]];
-
+        
     } success:^() {
         
         // successfully registered!
@@ -79,7 +79,6 @@
         NSLog(@"PushEE registration Error: %@", error);
     }];
 }
-
 // There was an error with connecting to APNs or receiving an APNs generated token for this phone!
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
     // something went wrong, while talking to APNs
