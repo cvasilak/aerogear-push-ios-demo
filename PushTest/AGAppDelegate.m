@@ -54,7 +54,7 @@
     [registration registerWithClientInfo:^(id<AGClientDeviceInformation> clientInfo) {
         
         // You need to fill the 'Variant Id' together with the 'Variant Secret'
-        // both received when performing the mobile variant registration with the server.
+        // both received when performing the variant registration with the server.
         [clientInfo setVariantID:@"<# Variant Id #>"];
         [clientInfo setVariantSecret:@"<# Variant Secret #>"];
         
