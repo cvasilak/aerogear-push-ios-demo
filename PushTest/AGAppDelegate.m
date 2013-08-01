@@ -73,7 +73,7 @@
         
     } success:^() {
         
-        // successfully registered!
+        NSLog(@"Device successfully registered to PushEE server!");
         
     } failure:^(NSError *error) {
         // did receive an HTTP error from the PushEE server ???
