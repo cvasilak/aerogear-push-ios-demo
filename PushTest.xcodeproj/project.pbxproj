@@ -16,8 +16,6 @@
 		A076DAF4174225380056B951 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = A076DAF3174225380056B951 /* Default.png */; };
 		A076DAF6174225380056B951 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A076DAF5174225380056B951 /* Default@2x.png */; };
 		A076DAF8174225380056B951 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A076DAF7174225380056B951 /* Default-568h@2x.png */; };
-		A076DAFB174225380056B951 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A076DAF9174225380056B951 /* MainStoryboard.storyboard */; };
-		A076DAFE174225380056B951 /* AGViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A076DAFD174225380056B951 /* AGViewController.m */; };
 		A076DB06174225380056B951 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A076DB05174225380056B951 /* SenTestingKit.framework */; };
 		A076DB07174225380056B951 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A076DAE1174225380056B951 /* UIKit.framework */; };
 		A076DB08174225380056B951 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A076DAE3174225380056B951 /* Foundation.framework */; };
@@ -52,9 +50,6 @@
 		A076DAF3174225380056B951 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		A076DAF5174225380056B951 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		A076DAF7174225380056B951 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		A076DAFA174225380056B951 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
-		A076DAFC174225380056B951 /* AGViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AGViewController.h; sourceTree = "<group>"; };
-		A076DAFD174225380056B951 /* AGViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AGViewController.m; sourceTree = "<group>"; };
 		A076DB04174225380056B951 /* PushTestTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PushTestTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A076DB05174225380056B951 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		A076DB0D174225380056B951 /* PushTestTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushTestTests-Info.plist"; sourceTree = "<group>"; };
@@ -125,9 +120,6 @@
 			children = (
 				A076DAF0174225380056B951 /* AGAppDelegate.h */,
 				A076DAF1174225380056B951 /* AGAppDelegate.m */,
-				A076DAF9174225380056B951 /* MainStoryboard.storyboard */,
-				A076DAFC174225380056B951 /* AGViewController.h */,
-				A076DAFD174225380056B951 /* AGViewController.m */,
 				A076DAE8174225380056B951 /* Supporting Files */,
 			);
 			path = PushTest;
@@ -244,7 +236,6 @@
 				A076DAF4174225380056B951 /* Default.png in Resources */,
 				A076DAF6174225380056B951 /* Default@2x.png in Resources */,
 				A076DAF8174225380056B951 /* Default-568h@2x.png in Resources */,
-				A076DAFB174225380056B951 /* MainStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,7 +300,6 @@
 			files = (
 				A076DAEE174225380056B951 /* main.m in Sources */,
 				A076DAF2174225380056B951 /* AGAppDelegate.m in Sources */,
-				A076DAFE174225380056B951 /* AGViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,14 +328,6 @@
 				A076DAEB174225380056B951 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		A076DAF9174225380056B951 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A076DAFA174225380056B951 /* en */,
-			);
-			name = MainStoryboard.storyboard;
 			sourceTree = "<group>";
 		};
 		A076DB0E174225380056B951 /* InfoPlist.strings */ = {
