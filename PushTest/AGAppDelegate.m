@@ -38,6 +38,8 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    // reset 'badge' icon once the app comes to foreground
+    [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
 }
 
 // Here we need to register this "Mobile Variant Instance"
