@@ -1,3 +1,16 @@
 language: objective-c
+
+before_install:
+    - gem install cocoapods
+    - brew update
+    - brew uninstall xctool && brew install xctool
+
+script:
+    - xctool -workspace PushTest.xcworkspace -scheme PushTest -sdk iphonesimulator -configuration Release
+
 notifications:
   irc: "irc.freenode.org#aerogear"
+
+branches:
+  only:
+    - master
