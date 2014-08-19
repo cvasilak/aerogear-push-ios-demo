@@ -83,12 +83,12 @@
         
     } success:^() {
         
-        NSLog(@"Device successfully registered to PushEE server!");
+        NSLog(@"Device successfully registered to UPS server!");
         
     } failure:^(NSError *error) {
         // did receive an HTTP error from the PushEE server ???
         // Let's log it for now:
-        NSLog(@"PushEE registration Error: %@", error);
+        NSLog(@"UPS registration Error: %@", error);
     }];
 }
 // There was an error with connecting to APNs or receiving an APNs generated token for this phone!
