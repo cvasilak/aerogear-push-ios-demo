@@ -1,6 +1,6 @@
 # aerogear-push-ios-demo [![Build Status](https://travis-ci.org/aerogear/aerogear-push-ios-demo.png)](https://travis-ci.org/aerogear/aerogear-push-ios-demo)
 
-Demo application used in the [iOS Push Notification tutorial](http://aerogear.org/docs/guides/aerogear-push-ios/).
+Demo application used in the [iOS Push Notification tutorial](http://aerogear.org/docs/unifiedpush/aerogear-push-ios/).
 
 
 Setup
